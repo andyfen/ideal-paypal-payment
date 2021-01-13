@@ -15,25 +15,6 @@ const order = {
   }
 };
 
-
-function createOrder(data, actions) {
-  return actions.order.create(order);
-}
-
-function onApprove(data, actions) {
-  return actions.order.capture().then((details) => {
-    alert(`Transaction completed by ${details.payer.name.given_name}!`);
-  });
-}
-
-function onCancel(data, actions) {
-  console.log("onCancel called");
-}
-
-function onError(err) {
-  console.error(err);
-}
-
 /* ----
 * Paypal
 ------ */
@@ -51,9 +32,20 @@ paypal
       label: "pay"
     },
 
-    createOrder,
-    onApprove,
-    onError
+    createOrder(data, actions) {
+      return actions.order.create(order);
+    },
+    onApprove(data, actions) {
+      return actions.order.capture().then((details) => {
+        alert(`Transaction completed by ${details.payer.name.given_name}!`);
+      });
+    },
+    onCancel(data, actions) {
+      console.log("onCancel called");
+    },
+    onError(err) {
+      console.error(err);
+    }
   })
   .render("#paypal-btn");
 
@@ -109,11 +101,21 @@ paypal
     style: {
       label: "pay"
     },
-
-    createOrder,
-    onApprove,
-    onCancel,
-    onError
+    
+    createOrder(data, actions) {
+      return actions.order.create(order);
+    },
+    onApprove(data, actions) {
+      return actions.order.capture().then((details) => {
+        alert(`Transaction completed by ${details.payer.name.given_name}!`);
+      });
+    },
+    onCancel(data, actions) {
+      console.log("onCancel called");
+    },
+    onError(err) {
+      console.error(err);
+    }
   })
   .render("#ideal-btn");
 
