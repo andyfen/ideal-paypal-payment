@@ -10,8 +10,8 @@ const order = {
     }
   ],
   application_context: {
-    return_url: `${window.location.origin}/success`,
-    cancel_url: `${window.location.origin}/cancel`
+    return_url: `${window.location.href}success`,
+    cancel_url: `${window.location.href}cancel`
   }
 };
 
@@ -101,7 +101,7 @@ paypal
     style: {
       label: "pay"
     },
-    
+
     createOrder(data, actions) {
       return actions.order.create(order);
     },
