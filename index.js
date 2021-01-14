@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return, new-cap, no-alert, no-console */
 
-// hack: handle bothlocalhost / deployment urls, remove any filepaths
+// to handle both localhost and deployment urls, remove any filepaths
 const href = window.location.href;
 const MECHANT_BASE_URL = href.substring(0, href.lastIndexOf('/'));
 
