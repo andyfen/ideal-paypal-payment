@@ -1,5 +1,9 @@
 /* eslint-disable consistent-return, new-cap, no-alert, no-console */
 
+// hack: handle bothlocalhost / deployment urls, remove any filepaths
+const href = window.location.href;
+const MECHANT_BASE_URL = href.substring(0, href.lastIndexOf('/'));
+
 const order = {
   purchase_units: [
     {
@@ -10,8 +14,8 @@ const order = {
     }
   ],
   application_context: {
-    return_url: `${window.location.href}success`,
-    cancel_url: `${window.location.href}cancel`
+    return_url: `${MECHANT_BASE_URL}/success`,
+    cancel_url: `${MECHANT_BASE_URL}/cancel`
   }
 };
 
